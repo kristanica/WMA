@@ -60,7 +60,7 @@ include_once "php/getAlbum.php";
 
                     <div class="flex justify-center items-center relative">
                         <!-- Retrieves the image -->
-                        <img src="<?= $album["image"] ?>" class="h-[450px] object-contain">
+                        <img src="<?= $album["image"] ?>" class="h-[450px] object-contain border-yellow-400 border-[2px]">
 
                     </div>
 

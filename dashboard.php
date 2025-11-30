@@ -2,6 +2,7 @@
 
 include_once "php/getArtist.php";
 include_once "php/hardCodedInfo.php";
+include_once "php/CRUD/createComment.php";
 ?>
 
 
@@ -37,10 +38,11 @@ include_once "php/hardCodedInfo.php";
     <div class="fixed inset-0 bg-[url(./assets/optimized-logo-gif.webp)] opacity-30 -z-10 "></div>
 
     <div class="ml-10 mt-5 flex flex-col fixed gap-3">
-        <a class="cursor-pointer font-exo text-sm  hover:underline" href="dashboard.php">HOME</a>
-        <a class="cursor-pointer font-exo text-sm  hover:underline" href="album.php">ALBUM</a>
-        <a class="cursor-pointer font-exo text-sm  hover:underline" href="tracks.php">TRACKS</a>
-        <a class="cursor-pointer font-exo text-sm hover:underline" href="allReleases.php">ALL RELEASES</a>
+        <a class="cursor-pointer text-sm hover:underline" href="dashboard.php">HOME</a>
+        <a class="cursor-pointer text-sm hover:underline" href="album.php">ALBUM</a>
+        <a class="cursor-pointer text-sm hover:underline" href="tracks.php">TRACKS</a>
+        <a class="cursor-pointer text-sm hover:underline" href="allReleases.php">ALL RELEASES</a>
+        <a class="cursor-pointer text-sm hover:underline" href="comments.php">COMMENTS</a>
 
     </div>
 
@@ -137,6 +139,36 @@ include_once "php/hardCodedInfo.php";
             </div>
         </div>
         </div>
+
+
+        <form method="post" class="bg-[#1e1e1e] w-[70%] mx-auto my-5 py-6 px-5 rounded-xl">
+
+            <div class="mb-4">
+                <label class="pl-2 text-yellow-400 font-semibold">EMAIL:</label> <br>
+                <div class="px-2">
+                    <input class="w-full px-4 py-2 rounded-lg bg-[#1c151a] text-white border border-yellow-400 " name="email" type="email" required>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="pl-2 text-yellow-400 font-semibold">NAME:</label> <br>
+                <div class="px-2">
+                    <input class="w-full px-4 py-2 rounded-lg bg-[#1c151a] text-white border border-yellow-400 " name="name" type="text" required>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="pl-2 text-yellow-400 font-semibold">COMMENT:</label> <br>
+                <div class="px-2">
+                    <textarea class="w-full px-4 py-2 h-32 rounded-lg bg-[#1c151a] text-white border border-yellow-400 " name="comment" required></textarea>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" name="createComment" class="bg-yellow-400 text-[#1c151a] px-6 py-2 rounded-lg hover:bg-yellow-500 font-semibold transition">SUBMIT</button>
+            </div>
+
+        </form>
 
     </main>
     <footer class="bg-black">

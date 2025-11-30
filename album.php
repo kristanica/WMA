@@ -102,10 +102,11 @@ include_once "php/getAlbum.php";
 
             </div>
             <div class="flex flex-col justify-center">
-                <a class="cursor-pointer font-exo text-sm  hover:underline">HOME</a>
-                <a class="cursor-pointer font-exo text-sm  hover:underline" href="album.php">ALBUM</a>
-                <a class="cursor-pointer font-exo text-sm  hover:underline">TRACKS</a>
-                <a class="cursor-pointer font-exo text-sm hover:underline">ALL RELEASES</a>
+                <a class="cursor-pointer text-sm hover:underline" href="dashboard.php">HOME</a>
+                <a class="cursor-pointer text-sm hover:underline" href="album.php">ALBUM</a>
+                <a class="cursor-pointer text-sm hover:underline" href="tracks.php">TRACKS</a>
+                <a class="cursor-pointer text-sm hover:underline" href="allReleases.php">ALL RELEASES</a>
+                <a class="cursor-pointer text-sm hover:underline" href="comments.php">COMMENTS</a>
             </div>
             <div class="flex flex-col justify-center text-center md:text-left space-y-3">
                 <h2 class="text-white font-semibold tracking-wider font-exo">FOLLOW PARAMORE</h2>

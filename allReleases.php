@@ -54,15 +54,21 @@ include_once "php/hardCodedInfo.php";
     </header>
 
     <main>
-        <div id="topAlbum" class="flex gap-5 overflow-x-auto py-10 px-5 justify-center flex-col md:flex-row items-center flex-wrap">
+        <div id="topAlbum" class="flex flex-wrap justify-center gap-8 py-12 px-5">
 
             <?php foreach ($albums as $album): ?>
-                <div class="flex flex-col mx-3 bg-[#1e1e1e] rounded-xl overflow-hidden w-64 shadow-lg hover:scale-105 transition-transform">
-                    <img class="w-full h-64 object-cover" src="<?= $album["image"][3]["#text"] ?>" alt="<?= $album['name'] ?>">
-                    <h1 class="text-white text-center my-2  font-bold uppercase"><?= $album["name"] ?></h1>
+                <div class="flex flex-col bg-[#2a1f33] rounded-2xl overflow-hidden w-64 shadow-lg hover:scale-105 hover:shadow-yellow-500/70 transition-transform duration-300 border-2 border-transparent hover:border-yellow-400">
+
+                    <div class="overflow-hidden">
+                        <img class="w-full h-64 object-cover border-b-2 border-yellow-400" src="<?= $album["image"][3]["#text"] ?>" alt="<?= $album['name'] ?>">
+                    </div>
+
+                    <h1 class="text-yellow-400 text-center my-3 font-extrabold uppercase tracking-wide text-lg px-2"><?= $album["name"] ?></h1>
                 </div>
             <?php endforeach; ?>
+
         </div>
+
 
 
 
