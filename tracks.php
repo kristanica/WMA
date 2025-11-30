@@ -64,7 +64,7 @@ include_once "php/getAlbum.php";
 
                     </div>
 
-                    <div class="albumDetails max-h-0 overflow-hidden transition-all duration-500 ease-in-out opacity-0">
+                    <div class="albumDetails max-h-0 overflow-hidden transition-all duration-500 ease-in-out opacity-0 pointer-events-none">
                         <p class="text-center text-xl  mt-2 font-exo font-bold uppercase">
                             <?= $album["name"] ?>
                         </p>
@@ -137,6 +137,11 @@ include_once "php/getAlbum.php";
                 albumDetails[index].classList.toggle("max-h-[500px]");
                 albumDetails[index].classList.toggle("opacity-0");
                 albumDetails[index].classList.toggle("opacity-100");
+                albumDetails[index].classList.toggle("pointer-events-none");
+                albumDetails[index].addEventListener("click", (e) => {
+                    e.stopPropagation();
+                });
+
             });
         });
     </script>
