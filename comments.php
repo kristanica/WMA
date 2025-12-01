@@ -1,5 +1,7 @@
 <?php
+session_start();
 include_once "php/CRUD/retrieveComment.php"; // Fetch comments
+include_once "php/CRUD/editComment.php"; // Fetch comments
 
 ?>
 
@@ -51,15 +53,50 @@ include_once "php/CRUD/retrieveComment.php"; // Fetch comments
 
     <main class="">
 
+        <div class="w-full h-64 overflow-hidden">
+            <img src="./assets/images/concert.jpg" class="w-full h-full object-cover px-2">
+        </div>
 
-        <!-- Display Comments -->
+
         <div class="min-h-screen flex justify-center items-center flex-col gap-10">
 
             <?php foreach ($comment as $comm): ?>
                 <div class="bg-[#2a1f33] rounded-2xl p-6 w-[80%]">
-                    <div class="flex flex-col  md:justify-between items-start  mb-2">
-                        <p class="text-yellow-400 font-extrabold text-lg"><?= htmlspecialchars($comm["name"]) ?></p>
-                        <p class="text-gray-400 text-sm"><?= htmlspecialchars($comm["email"]) ?></p>
+                    <div class="flex flex-col md:flex-row md:justify-between items-start  mb-2">
+
+                        <div>
+                            <p class="text-yellow-400 font-extrabold text-lg"><?= htmlspecialchars($comm["username"]) ?></p>
+                            <p class="text-gray-400 text-sm"><?= htmlspecialchars($comm["email"]) ?></p>
+
+                        </div>
+
+
+                        <div>
+                            <?php if (isset($_SESSION["id"])): ?>
+                                <?php if ($_SESSION["id"] == $comm["user_id"]): ?>
+                                    <button class="edit-btn bg-yellow-400 text-black px-3 py-1 rounded">EDIT</button>
+
+                                    <form method="post" class="relative edit-form hidden mt-2">
+
+                                        <div class="absolute">
+
+                                            <input type="hidden" name="comment_id" value="<?= $comm['comment_id'] ?>">
+
+                                            <input type="text" name="editComment" class="text-black" value="<?= htmlspecialchars($comm["comment"]) ?>">
+                                            <button type="submit" name="updateComment" class="bg-green-500 text-white px-3 py-1 rounded mt-2">SAVE</button>
+                                        </div>
+
+                                    </form>
+
+
+                                <?php else: ?>
+                                    <p>CANNOT EDIT</p>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
+
+
+                        </div>
                     </div>
                     <p class="text-white text-md leading-relaxed"><?= htmlspecialchars($comm["comment"]) ?></p>
                 </div>
@@ -97,7 +134,14 @@ include_once "php/CRUD/retrieveComment.php"; // Fetch comments
             </div>
         </div>
     </footer>
-
+    <script>
+        document.querySelectorAll('.edit-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const form = btn.nextElementSibling;
+                form.classList.toggle('hidden');
+            });
+        });
+    </script>
 </body>
 
 </html>

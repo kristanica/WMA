@@ -1,16 +1,16 @@
 <?php
 include_once "connection.php";
-
-
 if (isset($_POST["createComment"])) {
     $success = false;
-    $name = mysqli_real_escape_string($conn, $_POST["name"]);
-    $email = mysqli_real_escape_string($conn, $_POST["email"]);
-    $comment = mysqli_real_escape_string($conn, $_POST["comment"]);
-    $query = "INSERT INTO comment (name, email, comment) VALUES ('$name', '$email', '$comment')";
+    $username =  $_SESSION["username"];
+    $email = $_SESSION["email"];
+    $user_id = $_SESSION["id"];
+    $comment = $_POST["comment"];
 
+    $stmt = $conn->prepare("INSERT INTO comment (username, email, comment, user_id) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("sssi", $username, $email, $comment, $user_id);
 
-    if ($conn->query($query)) {
+    if ($stmt->execute()) {
         $success = true;
         echo "<script>alert('Comment Added!')</script>";
     }
