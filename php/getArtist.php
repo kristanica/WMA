@@ -7,9 +7,7 @@ $url = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" . urle
 
 
 $response = file_get_contents($url);
-
 $data = json_decode($response, true);
-
 
 // Retrives only necesasry data
 $aboutParamore = $data["artist"];

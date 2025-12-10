@@ -14,10 +14,7 @@ if (isset($_POST["login"])) {
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
-
-
         if (password_verify($password, $user["password"])) {
-
             $_SESSION["id"] = $user["id"];
             $_SESSION["username"] = $user["username"];
             $_SESSION["email"] = $user["email"];

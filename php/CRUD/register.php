@@ -9,8 +9,6 @@ if (isset($_POST["register"])) {
     if ($password === $confirmPassword) {
         $username = $_POST["username"];
         $email = $_POST["email"];
-
-
         // Checks if the user is already registered
         $stmt2 = $conn->prepare("SELECT id FROM users WHERE username= ? OR email = ?");
         $stmt2->bind_param("ss", $username, $email);

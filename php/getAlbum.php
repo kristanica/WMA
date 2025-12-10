@@ -7,16 +7,11 @@ include_once "api.php";
 $url = "http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" . urlencode($artist) . "&api_key=$apiKey&format=json&limit=40";
 
 
-
-
-
 // Gets the data
 $response = file_get_contents($url);
 
 // Parses it into json
 $data = json_decode($response, true);
-
-
 
 
 // Retrives only necessary info, will be used to display all albulms on allRelease.php

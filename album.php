@@ -1,7 +1,11 @@
 <?php
 // Ensure getALbum only run once
+session_start();
 include_once "php/getAlbum.php";
-
+if (isset($_POST["logout"])) {
+    $_SESSION = [];
+    session_destroy();
+}
 ?>
 
 
@@ -12,7 +16,7 @@ include_once "php/getAlbum.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Album</title>
-
+    <link rel="stylesheet" href="scroll.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Jersey+10&display=swap" rel="stylesheet">
@@ -41,12 +45,28 @@ include_once "php/getAlbum.php";
 
     <div class="fixed inset-0 bg-[url(./assets/optimized-logo-gif.webp)] opacity-30 -z-10 "></div>
 
-    <div class="ml-10 mt-5 flex flex-col fixed gap-3 z-2">
-        <a class="cursor-pointer font-exo text-sm  hover:underline" href="dashboard.php">HOME</a>
-        <a class="cursor-pointer font-exo text-sm  hover:underline" href="album.php">ALBUM</a>
-        <a class="cursor-pointer font-exo text-sm  hover:underline" href="tracks.php">TRACKS</a>
-        <a class="cursor-pointer font-exo text-sm hover:underline" href="allReleases.php">ALL RELEASES</a>
+    <div class="fixed top-5 left-0 right-0 flex justify-between px-10  gap-3 z-10">
+        <div class="flex flex-col gap-5">
+            <a class="cursor-pointer text-sm hover:underline tracking-[15px] " href="dashboard.php">HOME</a>
+            <a class="cursor-pointer text-sm hover:underline tracking-[15px] " href="album.php">ALBUM</a>
+            <a class="cursor-pointer text-sm hover:underline tracking-[15px] " href="tracks.php">TRACKS</a>
+            <a class="cursor-pointer text-sm hover:underline tracking-[15px] " href="allReleases.php">ALL RELEASES</a>
+            <a class="cursor-pointer text-sm hover:underline tracking-[15px] " href="comments.php">COMMENTS</a>
+        </div>
+        <div class="flex flex-col gap-5 items-end">
 
+            <!-- Checks wether user is login -->
+            <?php
+            if (isset($_SESSION["id"])) {
+            ?>
+                <form method="post">
+                    <button type="submit" name="logout" class="cursor-pointer text-sm hover:underline tracking-[15px] ">LOG OUT</button>
+                </form>
+            <?php } else { ?>
+                <a class="cursor-pointer text-sm hover:underline tracking-[15px] " href="register.php">REGISTER</a>
+                <a class="cursor-pointer text-sm hover:underline tracking-[15px] " href="login.php">LOGIN</a>
+            <?php } ?>
+        </div>
     </div>
     <header class="h-[20vh] flex flex-col justify-end items-center text-center relative">
         <img src="./assets/optimized-logo-gif.webp" class="h-24 w-24 fixed top-10 z-2 inset-50">
