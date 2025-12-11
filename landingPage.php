@@ -16,7 +16,6 @@
 
             100% {
                 background-position: 500px 0;
-
             }
         }
 
@@ -24,10 +23,13 @@
             animation: scroll-left 30s linear infinite;
             background-repeat: repeat-x;
             background-size: cover;
+        }
 
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.5);
         }
     </style>
-
     <script>
         tailwind.config = {
             theme: {
@@ -39,27 +41,38 @@
             }
         }
     </script>
-
 </head>
 
-<body class="bg-gray-900 min-h-screen min-w-screen relative">
+<body class="bg-gray-900 min-h-screen relative overflow-hidden">
 
-    <div class="absolute inset-0 bg-scroll bg-[url('./assets/riot.jpg')]">
-    </div>
-    <main class="flex min-h-screen justify-center flex-col items-center relative z-1 text-center">
 
-        <img src="./assets//paramore-icon.png">
-        <h1 class="text-orange-500 text-6xl font-paramore  font-extrabold">PARAMORE</h1>
+    <div class="absolute inset-0 bg-scroll bg-[url('./assets/riot.jpg')]"></div>
 
-        <p class="text-white">
+    <div class="absolute inset-0 overlay"></div>
+
+
+    <main class="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-6">
+
+        <img src="./assets/paramore-icon.png" class="w-32 md:w-48 mb-6 ">
+
+        >
+        <h1 class="text-orange-500 text-5xl md:text-6xl lg:text-7xl font-paramore font-extrabold tracking-wider mb-4 drop-shadow-lg">
+            PARAMORE
+        </h1>
+
+
+        <p class="text-white max-w-xl text-sm md:text-base lg:text-lg leading-relaxed mb-6 drop-shadow-md">
             <?php echo $aboutParamore["bio"]["summary"] ?>
+        </p>
 
-        </p> <br>
-        <a href="dashboard.php" class="bg-[#FFFFFF] border-gray-400 border-[2px] font-bold px-7 py-2 rounded-xl mt-2 hover:scale-105 transition-transform ease-in duration-200 ">
+
+        <a href="dashboard.php"
+            class="bg-white text-gray-900 font-bold px-8 py-3 rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-200">
             CONTINUE
         </a>
-
     </main>
+
+
 
 </body>
 
