@@ -1,7 +1,6 @@
 <?php
 
 
-$apiKey = "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"; // your key
 $url = "https://api.openai.com/v1/chat/completions";
 
 $systemPrompt = <<<PROMPT
